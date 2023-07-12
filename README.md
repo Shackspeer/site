@@ -24,11 +24,11 @@ Tüm veritabanı işlemleri local bilgisayara göre şekillendirildiği için
 dosyaları yükledikten sonra **192.168.184.214** ip adresi geçen her yeri kendi local ip adresinize göre değiştirmeniz gerekiyor
 
 ```
-*ÖRNEK:*
-*KAYITLI IP : 192.168.184.214:8080,*
-*DEĞİŞTİRİLECEK IP : 192.168.1.4,*
+*ÖRNEK:
+KAYITLI IP : 192.168.184.214:8080,
+DEĞİŞTİRİLECEK IP : 192.168.1.4,
 
-*LOCAL IP ADRESİNE GÖRE ŞEKİLLENDİRİLMİŞ SON HALİ : 192.168.1.4:8080*
+LOCAL IP ADRESİNE GÖRE ŞEKİLLENDİRİLMİŞ SON HALİ : 192.168.1.4:8080*
 ```
 
 ### API BAŞLAT
