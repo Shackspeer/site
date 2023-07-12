@@ -27,7 +27,7 @@ dosyaları yükledikten sonra **192.168.184.214** ip adresi geçen her yeri kend
 ÖRNEK:
 
 KAYITLI IP : 192.168.184.214:8080,
-DEĞİŞTİRİLECEK IP : 192.168.1.4,
+lOCAL IP : 192.168.1.4,
 
 LOCAL IP ADRESİNE GÖRE ŞEKİLLENDİRİLMİŞ SON HALİ : 192.168.1.4:8080 
 ```
