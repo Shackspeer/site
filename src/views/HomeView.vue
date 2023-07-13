@@ -1,15 +1,26 @@
 <template>
-  <div class="logo position-absolute" style="top:-50px;z-index: 7;">
-    <img src="../assets/libslogo.png" style="width: 200px;height: 200px;">
+  <div v-if="addedState==true" class="MSG MSG_added alert-success" ref="success">Product successfully added to cart</div>
+  <div v-if="!addedState" class="MSG MSG_add_error alert-danger" ref="fail"> Product could not be added to the cart</div>
+
+  
+  <div class="logo position-absolute">
+    <img src="../assets/libslogo.png">
   </div> 
 
   <userMenu v-if="isLogedin"></userMenu>
 
   <!-- Registry -->
-  <div v-if="mustLogin" class="position-absolute d-flex" style="z-index: 8;right: 50px;top: 20px;">
-    <div class="registry login text-light px-3 text-center mx-2 d-flex" style="width: 100px;height:30px;border-radius: 15px;justify-content: center;align-items: center;font-size: 14px;cursor: pointer;transition: all 0.4s;"><a @click="rotateToLogin()">Login</a></div>
-    <div class="registry signin text-light px-3 text-center mx-2 d-flex" style="width: 100px;height:30px;border-radius: 15px;justify-content: center;align-items: center;font-size: 14px;cursor:pointer;transition: all 0.4s;"><a @click="rotateToSignin()">Register</a></div>
-  </div>
+    <div v-if="mustLogin" class="mobileRegistry" ref="mobileRegistry">
+      <mobile/>
+    </div>
+  
+  
+  
+    <div v-if="mustLogin" class="position-absolute registryMain" ref="desktopRegistry">
+      <div class="registry login text-light px-3 text-center mx-2 d-flex" style="width: 100px;height:30px;border-radius: 15px;justify-content: center;align-items: center;font-size: 14px;cursor: pointer;transition: all 0.4s;"><a @click="rotateToLogin()">Login</a></div>
+      <div class="registry signin text-light px-3 text-center mx-2 d-flex" style="width: 100px;height:30px;border-radius: 15px;justify-content: center;align-items: center;font-size: 14px;cursor:pointer;transition: all 0.4s;"><a @click="rotateToSignin()">Register</a></div>
+    </div>
+  
 
 
 
@@ -17,27 +28,17 @@
 
 
 
-  <!-- Navbar -->
-  <div v-if="false" class="container-fluid bg-white position-absolute d-flex justify-content-end" style="height: 40px;">
-      <div class=" text-light dropdown d-grid mt-3" style="width: 100px; height: 40px;" v-auto-animate ref="parent">
-        <p class="pt-2">Menu</p>
-        <div class="sections bg-white text-light" style="margin-top: -4px;">
-          <div ><a href="#" class="section bg-light border text-dark" style="--i:1">Section</a></div>
-          <div><a href="#" class="section bg-light border text-dark" style="--i:2">Section</a></div>
-          <div><a href="#" class="section bg-light border text-dark" style="--i:3">Section</a></div>
-        </div>
-      </div>
-  </div>
+  
   
   <!-- Banner -->
 
-  <div class="container-fluid  bg-white vw-100 vh-100 d-flex align-items-center" >
-    <div class="container-fluid bg-white w-50">
+  <div class="container-fluid  bg-white vw-100 vh-100 d-flex text-center align-items-center" >
+    <div class="container-fluid bg-white w-50 bannerLayout_1">
       <h1 class="text-uppercase">Choose your design</h1>
       <p>Chose your most wished web page that approved by <img src="../assets/libslogo.png" style="width: 100px; height: 100px;user-select: none;-webkit-user-drag:none;position: relative;right: 15px;"></p>
       <button class="btn btn-secondary"><a href="#Vue" class="text-light">Start explore</a></button>
     </div>
-    <div class="container-fluid bg-white w-50 h-100 d-grid align-items-center">
+    <div class="container-fluid bg-white w-50 h-100  align-items-center bannerImage">
       <img src="../assets/10168.jpg" class="w-100 h-75">
     </div>  
   </div>
@@ -50,11 +51,11 @@
   <!-- Vue Header -->
   
   
-  <div class="container-fluid vw-100 vh-100 d-flex bg-light  position-relative text-center" style="top: 460px;z-index: 7;" id="Vue">
+  <div class="container-fluid vw-100 vh-100 bg-light  position-relative text-center vue_templates" style="top: 460px;z-index: 7;" id="Vue">
     <div class="position-absolute  bg-light text-dark p-5" style="top:-150px;left: 0;width: 100vw">
       <h1><img src="../assets/logo.png" style="width: 50px;height:60px;"> VUE TEMPLATES</h1>
     </div>
-    <div class="container-fluid w-50 h-100 bg-light text-dark d-grid pt-5">
+    <div class="container-fluid h-100 bg-light text-dark d-grid singleProduct">
       <h3>Vue Page 1</h3>
       <img  src="../assets/web-site-2.png" class="w-75 h-100 position-relative p-3 mx-auto websites" style="top:0px;filter: drop-shadow(1px 1px 5px black);">
       <h4>Ingredients</h4>
@@ -70,15 +71,15 @@
       <!-- Buttons -->
       <div class="d-flex container position-relative" style="width: 100%;height: 40px;justify-content: center;">
         <button @click="rotate1()" class="btn btn-success mx-1">Preview</button>
-        <button class="btn btn-light border border-dark mx-1" @click="addToCart()">Add to cart</button>
+        <button class="btn btn-light border border-dark mx-1 adder" @click="addToCart()">Add to cart</button>
       </div>
     </div>
     
     
-    <div class="" style="border: 1px solid #333;width: 0px; height: 700px;box-sizing: border-box;position: absolute;left: 50.5%;top: 25px;"></div>
+    <div class="line" style="border: 1px solid #333;width: 0px; height: 650px;box-sizing: border-box;position: absolute;left: 50.5%;top:-10px;"></div>
     
     
-    <div class="container-fluid w-50 h-100 bg-light text-dark d-grid text-center pt-5" style="width: 50%;margin: 0;;">
+    <div class="container-fluid h-100 bg-light text-dark d-grid  singleProduct" >
       <h3>Vue Page 2</h3>
       <img  src="../assets/web-site-2.png" class="w-75 h-100 position-relative p-3 mx-auto websites" style="top:0px;filter: drop-shadow(1px 1px 5px black);">
       <h4>Ingredients</h4>
@@ -95,7 +96,7 @@
       <!-- Buttons -->
       <div class="d-flex container position-relative" style="width: 100%;height: 40px;justify-content: center;">
         <button class="btn btn-success mx-1 preview">Preview</button>
-        <button class="btn btn-light border border-dark mx-1" @click="addToCart()">Add to cart</button>
+        <button class="btn btn-light border border-dark mx-1 adder" @click="addToCart()">Add to cart</button>
       </div>
     </div>
     
@@ -109,24 +110,27 @@
 // @ is an alias to /src
 
 import userMenu from '../components/userMenu.vue'
-
+import mobile from '../components/mobileLogin.vue'
 export default {
   name: 'HomeView',
   data(){
     return{
+      addedState : null,
       sections : [{name:"INTRODUCTION",src:"#introduction"},{name:"WEB PAGES",src:"#webpages"}],
       isLogedin : sessionStorage.getItem("status"),
       userData : JSON.parse(sessionStorage.getItem("userData")),
       mustLogin : true,
       SCvisible : false,
       inserted : false,
+      isMobile : false,
       data : []
     }
   },
 
  
   components:{
-    userMenu
+    userMenu,
+    mobile
    
   },
   methods:{
@@ -145,7 +149,7 @@ export default {
     },
     async addToCart(){
 
-      let body = {
+      if(this.isLogedin){let body = {
         id : this.userData.id,
         propertyId : 2,
         propertyIdentity : "vue template 1",
@@ -166,20 +170,44 @@ export default {
       await fetch("http://192.168.184.214:3000/createCart",options)
       .then(resp=>resp.json())
       .then(resp=>{
-        try{
           this.inserted = resp.inserted
-          alert("inserted : " + this.inserted)
-        }
-        catch{
-          alert("an error occurred")
-        }
+          this.addedState = this.inserted    
+               
+        
       })
+      
+      setTimeout(()=>{
+        document.querySelectorAll(".adder").forEach(e=>e.disabled=true)
+        document.querySelector(".MSG").style = "right:0px;opacity:1" 
+      },50)
+      setTimeout(()=>{
+        document.querySelector(".MSG").style = "right:300px;opacity:0;"
+      },1550)
+      setTimeout(()=>{
+        document.querySelector(".MSG").style = "right:-450px;opacity:0"
+        document.querySelectorAll(".adder").forEach(e=>e.disabled=false)
+      },2050)}
+      else{
+        this.rotateToSignin()
+      }
     }
+
   
   },
   mounted(){
     sessionStorage.getItem("status") ? this.mustLogin = false : this.mustLogin = true
     sessionStorage.getItem("status") ? this.isLogedin = true : this.isLogedin = false
+
+    if(!this.isLogedin){
+      window.addEventListener("resize",()=>{
+      if(window.innerWidth<=600){
+        this.mobile = !this.mobile
+      }
+      else if(window.innerWidth>600){
+        this.mobile = !this.mobile
+      }
+    })
+    }
   }
  
 }
@@ -188,7 +216,19 @@ export default {
   *{
     scroll-behavior: smooth;
   }
-
+  .logo{
+    top:-50px;z-index: 7;
+  }
+  .singleProduct{
+    width: 50vw;
+    padding-bottom: 100px;
+  }
+  .vue_templates{
+    display: flex;
+  }
+  .bannerImage{
+    display:grid
+  }
 
   ul li{
     text-align: start;
@@ -241,6 +281,78 @@ export default {
     background-color: #444;
     opacity: 0.7;
   }
+  .MSG{
+    width: 400px;
+    height: 35px;
+    position: fixed;
+    bottom: 0px;
+    z-index: 999;
+    margin: 0 20px 20px 0px;
+    right:  -450px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s all;
+  }
+  .registryMain{
+    display: flex;
+    z-index: 8;
+    right: 50px;
+    top: 20px;
+  }
+  .singleProduct{
+    width: 100vw;
+    height: 100px;
+    padding-top: 200px;
+    border-top: 1px solid #333;
+  }
+  .logo img{
+    width: 200px;height: 200px;
+  }
+  .mobileRegistry{
+    display: none;
+  }
+  
+  @media screen and (max-width: 900px){
+    
+    .bannerImage{
+      display: none;
+      
+    }
+    .bannerLayout_1{
+      position: relative;
+      top: 100px;
+    }
+
+  }
+
+  @media screen and (max-width: 600px){
+    .vue_templates{
+      display: grid;
+    }
+    .line{
+      display: none;
+    }
+    .registryMain{
+      display: none;
+    }
+    .logo{
+      position: absolute;
+      margin: auto;
+      inset: 0;
+      right: 40px;
+      top: -20px;
+    }
+    .logo img{
+      width: 300px;
+      height: 300px;
+    }
+    .mobileRegistry{
+      display: grid;
+    }
+  }
+  
   
 
 </style>

@@ -78,7 +78,9 @@ export default {
         this.total = 0
         let newArray = this.decodeData(array); 
         newArray.forEach(e=>{
-          this.total = this.total + Number(e.propertyPrice)
+          let totalText = this.total + Number(e.propertyPrice)
+          this.total = Number(totalText.toString().slice(0,7))
+          
         })
         
        

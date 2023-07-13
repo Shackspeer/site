@@ -75,7 +75,7 @@
             
             <button class="btn btn-primary mx-auto my-5" style="width: 400px;" @click="toLogin()">Login</button>
 
-            <p class="mx-auto" style="width: 400px;">Havent an account on LibsTech ? <span class="text-primary" @click="setRegistry()" style="cursor: pointer;">Sign in</span></p>
+            <p class="mx-auto" style="width: 400px;">Havent an account on LibsTech ? <span class="text-primary" @click="setRegistry()" style="cursor: pointer;">Sign up</span></p>
             
             <div  class="alert alert-success d-flex align-items-center justify-content-start mx-auto mt-2 py-1 position-relative loginSuccess"><span class="material-symbols-outlined">done</span>Loged in successfully</div>
             
@@ -99,7 +99,7 @@ import { createCart } from '@/methods/create'
 export default {
     data(){
         return{
-            registryContent : "Sign in",
+            registryContent : "Sign up",
             signin :null ,
             login :null,
             email : '',

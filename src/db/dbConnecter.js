@@ -220,7 +220,7 @@ const createSpecificUserCart = async(req,res)=>{
         con.query(`CREATE TABLE ${tableName}(id integer not null primary key,propertyId integer not null,propertyIdentity varchar(999) not null,propertyPrice varchar(999) not null)`,(err,resp)=>{
             if(err){
                 con.query(`INSERT INTO ${tableName}(id,propertyId,propertyIdentity,propertyPrice) VALUES(${tempId},${propertyId},'${encodedPropertyIdentity}','${encodedPropertyPrice}')`,(err,resp)=>{
-                    if(err) reject(err)
+                    if(err) reject({inserted : false})
                     else{
                         resolve({inserted : true})
                     }
@@ -228,7 +228,7 @@ const createSpecificUserCart = async(req,res)=>{
             }
             else{
                 con.query(`INSERT INTO ${tableName}(id,propertyId,propertyIdentity,propertyPrice) VALUES(${tempId},${propertyId},'${encodedPropertyIdentity}','${encodedPropertyPrice}')`,(err,resp)=>{
-                    if(err) reject(err)
+                    if(err)  reject({inserted : false})
                     else{
                         resolve({inserted : true})
                     }

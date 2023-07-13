@@ -2,11 +2,11 @@
     <div  class="sideBarBg">
         <div class="menu">  
             
-            <p class="personalSettings" @click="openPersonalSetting()"><span class="material-symbols-outlined" style="position: relative;right: 130px;top: 5px;cursor: pointer;" v-text="psIcon1"></span>Personal settings</p>
+            <p class="personalSettings mainSections" @click="openPersonalSetting()"><span class="material-symbols-outlined" style="position: relative;right: 130px;top: 5px;cursor: pointer;" v-text="psIcon1"></span>Personal settings</p>
             <div class="section" style="--i:1"><a href="#" @click="toProfile()">Profile <span class="material-symbols-outlined" style="padding:0 10px 0px 20px">person</span></a></div>
             <div class="section" style="--i:2"><a href="#" @click="toCart()">Shopping Cart <span class="material-symbols-outlined" style="padding:0 10px 0px 20px">shopping_cart</span></a></div>
             <div class="section" style="--i:3"><a href="#">Notifications <span class="material-symbols-outlined" style="padding:0 10px 0px 20px">notifications</span></a></div>
-            <p class="templates" @click="openTemplates()"><span class="material-symbols-outlined" style="position: relative;right: 180px;top: 5px;cursor: pointer;" v-text="psIcon2"></span>Templates</p>
+            <p class="templates mainSections" @click="openTemplates()"><span class="material-symbols-outlined" style="position: relative;right: 180px;top: 5px;cursor: pointer;" v-text="psIcon2"></span>Templates</p>
             <div class="templateBox">
                 <div class="section2" style="--i:1"><a href="/#Vue">Vue templates <i class="fa-brands fa-vuejs" style="padding:0 10px 0px 20px;font-size: 20px;"></i></a></div>
                 <div class="section2" style="--i:2"><a href="#">Vanilla templates<i class="fa-solid fa-ice-cream" style="padding:0 10px 0px 20px;font-size: 20px;"></i></a></div>
@@ -68,6 +68,7 @@ export default {
                     let elements = document.querySelectorAll(".section")
                     elements.forEach((e)=>{
                         e.style.display = "flex"
+                        
                         setTimeout(()=>{
                             e.style.left = "0px"
                         },100)
@@ -136,6 +137,10 @@ export default {
         toCart(){
             window.parent.location.href = "/cart"
         }
+    },
+    mounted(){
+        
+        
     }
 
     
@@ -189,6 +194,7 @@ export default {
     
 }
 .section{
+    top: 40px;
     position: relative;;
     left: 300px;
     right: -300px;
@@ -222,8 +228,8 @@ export default {
 
 .personalSettings{
     color: black;
-    position: relative;
-    right: 150px;
+    position: absolute;
+    right: 5px;
     opacity: 1;
     transition: all 0.4s;
     font-size: 16px;
