@@ -114,10 +114,10 @@ const changeGsm = async(req,res) =>{
 const addHobbies = async(req,res) =>{
     const {id,hobbies} = req.body
 
-    con.query(`select * from spesificInfo where id = ${id}`,(err,resp)=>{
+    con.query(`select * from specificInfo where id = ${id}`,(err,resp)=>{
         if(err) throw err
         if(resp.length>0){
-            con.query(`update spesificInfo set hobbies = '${hobbies}' where id = ${id}`,(err,resp)=>{
+            con.query(`update specificInfo set hobbies = '${hobbies}' where id = ${id}`,(err,resp)=>{
                 if(err) throw err
                 else{
                     res.send(JSON.stringify({Updated : true}))
@@ -125,7 +125,7 @@ const addHobbies = async(req,res) =>{
             })
         }
         else if(resp.length <=0){
-            con.query(`insert into spesificInfo(id,hobbies) values(${id},'${hobbies}')`,(err,resp)=>{
+            con.query(`insert into specificInfo(id,hobbies) values(${id},'${hobbies}')`,(err,resp)=>{
                 if(err) throw err
                 else{
                     res.send(JSON.stringify({Saved : true}))
@@ -137,10 +137,10 @@ const addHobbies = async(req,res) =>{
 const addEducation = async(req,res) =>{
     const {id,education} = req.body
 
-    con.query(`select * from spesificInfo where id = ${id}`,(err,resp)=>{
+    con.query(`select * from specificInfo where id = ${id}`,(err,resp)=>{
         if(err) throw err
         if(resp.length>0){
-            con.query(`update spesificInfo set education = '${education}' where id = ${id}`,(err,resp)=>{
+            con.query(`update specificInfo set education = '${education}' where id = ${id}`,(err,resp)=>{
                 if(err) throw err
                 else{
                     res.send(JSON.stringify({Updated : true}))
@@ -148,7 +148,7 @@ const addEducation = async(req,res) =>{
             })
         }
         else if(resp.length <=0){
-            con.query(`insert into spesificInfo(id,education) values(${id},'${education}')`,(err,resp)=>{
+            con.query(`insert into specificInfo(id,education) values(${id},'${education}')`,(err,resp)=>{
                 if(err) throw err
                 else{
                     res.send(JSON.stringify({Saved : true}))
@@ -161,10 +161,10 @@ const addEducation = async(req,res) =>{
 const addGoal = async(req,res) =>{
     const {id,goal} = req.body
 
-    con.query(`select * from spesificInfo where id = ${id}`,(err,resp)=>{
+    con.query(`select * from specificInfo where id = ${id}`,(err,resp)=>{
         if(err) throw err
         if(resp.length>0){
-            con.query(`update spesificInfo set goal = '${goal}' where id = ${id}`,(err,resp)=>{
+            con.query(`update specificInfo set goal = '${goal}' where id = ${id}`,(err,resp)=>{
                 if(err) throw err
                 else{
                     res.send(JSON.stringify({Updated : true}))
@@ -172,7 +172,7 @@ const addGoal = async(req,res) =>{
             })
         }
         else if(resp.length <=0){
-            con.query(`insert into spesificInfo(id,goal) values(${id},'${goal}')`,(err,resp)=>{
+            con.query(`insert into specificInfo(id,goal) values(${id},'${goal}')`,(err,resp)=>{
                 if(err) throw err
                 else{
                     res.send(JSON.stringify({Saved : true}))
@@ -182,7 +182,7 @@ const addGoal = async(req,res) =>{
     })
 }
 
-const getAllSpesifics = async(req,res)=>{
+const getAllspecifics = async(req,res)=>{
 
    const {id} = req.body
     const tableName = `specificInfo${id}`;
@@ -386,7 +386,7 @@ module.exports = {
     addHobbies,
     addEducation,
     addGoal,
-    getAllSpesifics,
+    getAllspecifics,
     createSpecificUserCart,
     getSpecificCart,
     removeProduct,
