@@ -184,12 +184,44 @@ const addGoal = async(req,res) =>{
 
 const getAllSpesifics = async(req,res)=>{
 
-    const {id} = req.body
-
-    con.query(`select * from spesificInfo where id = ${id}`,(err,resp)=>{
-        if(err) throw err
-        res.send(resp)
+   const {id} = req.body
+    const tableName = `specificInfo${id}`;
+    
+    const isTableExist = await new Promise((resolve)=>{
+        con.query(`select * from ${tableName} where id = ${id}`,(err,resp)=>{
+            if(err)
+            {
+                resolve(false)
+            }
+            else{
+                res.send(resp)
+            }
+        })
     })
+    if(isTableExist==false)
+    {
+        const isCreated = await new Promise((resolve)=>{
+            con.query(`create table ${tableName}(id int not null primary key, hobbies varchar(999),education varchar(999), goal varchar(999))`,(err,resp)=>{
+                if(err) throw err
+                else
+                {
+                    resolve(true)
+                }
+            })
+        })
+
+
+        if(isCreated){
+            con.query(`select * from ${tableName} where id = ${id}`,(err,resp)=>{
+                if(err) throw err
+                else
+                {
+                    res.send(resp)
+                }
+            })
+        }
+    }
+
 }
 
 
