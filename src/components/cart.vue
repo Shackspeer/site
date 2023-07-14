@@ -48,7 +48,7 @@ export default {
     //Get user data
         async getUserData() {
           try {
-            const response = await fetch(`http://192.168.184.214:3000/createCart/${this.data.id}`);
+            const response = await fetch(`http://localhost:3000/createCart/${this.data.id}`);
             const data = await response.json();
             this.amount = await data
             const encodedData = data[data.length - 1].rows;

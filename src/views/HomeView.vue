@@ -167,7 +167,7 @@ export default {
 
 
 
-      await fetch("http://192.168.184.214:3000/createCart",options)
+      await fetch("http://localhost:3000/createCart",options)
       .then(resp=>resp.json())
       .then(resp=>{
           this.inserted = resp.inserted

@@ -14,7 +14,7 @@ export const createCart = async (id) => {
     };
   
     try {
-      const response = await fetch('http://192.168.184.214:3000/createUserCart', options);
+      const response = await fetch('http://localhost:3000/createUserCart', options);
       const data = await response.json();
       console.log(data);
     } catch (error) {

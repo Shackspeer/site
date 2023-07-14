@@ -173,6 +173,9 @@ export default {
     right: 0px;
     transition: all 0.4s;
     box-shadow: 2px -2px 10px #333;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+   
 }
 .toggle span{
     height: 60px;
@@ -181,7 +184,8 @@ export default {
     color: whitesmoke;
     background: #333;
     border-radius: 0;
-    
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
     display: flex;
     align-items: center;
 }

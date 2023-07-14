@@ -136,7 +136,7 @@ export default {
             
         },
         goToMain(){
-            window.parent.location.href = "http://192.168.184.214:8080"
+            window.parent.location.href = "http://localhost:8080"
         },
         async changeName(){
             
@@ -154,7 +154,7 @@ export default {
                 body : JSON.stringify(body)
             }
 
-            await fetch("http://192.168.184.214:3000/updatePseudo",options)
+            await fetch("http://localhost:3000/updatePseudo",options)
             .then(resp=>resp.json())
             .then(resp=>console.log(resp))
             .catch(err=>console.log(err.message))
@@ -170,7 +170,7 @@ export default {
                 body : JSON.stringify(body)
             }
 
-            await fetch("http://192.168.184.214:3000/userData",options)
+            await fetch("http://localhost:3000/userData",options)
             .then(resp=>resp.json())
             .then(resp=>{
                 let newData = resp[0]
@@ -194,7 +194,7 @@ export default {
                 body : JSON.stringify(body)
             }
 
-            await fetch("http://192.168.184.214:3000/updateEmail",options)
+            await fetch("http://localhost:3000/updateEmail",options)
             .then(resp=>resp.json())
             .then(resp=>console.log(resp))
             .catch(err=>console.log(err.message))
@@ -225,7 +225,7 @@ export default {
 
                 // send a POST request to server and wait for response
 
-                await fetch("http://192.168.184.214:3000/addHobbies",options)
+                await fetch("http://localhost:3000/addHobbies",options)
                 .then(resp=>resp.json())
                 .then(resp=>{
                     if(resp.Updated!==undefined&&resp.Updated!==null){
@@ -279,7 +279,7 @@ export default {
 
             // send a POST request to server and wait for response
             
-            await fetch("http://192.168.184.214:3000/addEducation",options)
+            await fetch("http://localhost:3000/addEducation",options)
             .then(resp=>resp.json())
             .then(resp=>{
                 if(resp.Updated!==undefined&&resp.Updated!==null){
@@ -329,7 +329,7 @@ export default {
 
              // send a POST request to server and wait for response
 
-            await fetch("http://192.168.184.214:3000/addGoal",options)
+            await fetch("http://localhost:3000/addGoal",options)
             .then(resp=>resp.json())
             .then(resp=>{
                 if(resp.Updated!==undefined&&resp.Updated!==null){
@@ -374,7 +374,7 @@ export default {
 
        
 
-            await fetch("http://192.168.184.214:3000/getSpesifics",options)
+            await fetch("http://localhost:3000/getSpesifics",options)
             .then(resp=>resp.json())
             .then(resp=>{
               

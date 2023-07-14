@@ -165,7 +165,7 @@ export default {
 
 
 
-            await fetch("http://192.168.184.214:3000/addUser",options)
+            await fetch("http://localhost:3000/addUser",options)
             .then(resp=>resp.json())
             .then(resp=>{
                 
@@ -262,7 +262,7 @@ export default {
             }
 
 
-            await fetch("http://192.168.184.214:3000/userData",options)
+            await fetch("http://localhost:3000/userData",options)
             .then(resp=>resp.json())
             .then(resp=>sessionStorage.setItem("userData",JSON.stringify(resp[0])))
             console.log(JSON.parse(sessionStorage.getItem("userData")).id)
@@ -298,7 +298,7 @@ export default {
 
 
 
-            await fetch("http://192.168.184.214:3000/userControl",options).then(resp=>resp.json())
+            await fetch("http://localhost:3000/userControl",options).then(resp=>resp.json())
             .then(resp=>{
                 
                 if(resp[0]!==null&&resp[0]!==undefined){
